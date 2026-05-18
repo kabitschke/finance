@@ -1,0 +1,37 @@
+import { Item } from '@/types/Item';
+import styles from './page.module.css';
+import { TableItem } from '../TableItem/page';
+
+type Props = {
+  list: Item[]
+}
+export const TableArea = ({ list }: Props) => {
+
+
+
+  return (
+    <div className={styles.tableContainer}>
+      <table>
+        <thead>
+          <tr>
+            <th style={{ width: 100 }}>Data</th>
+            <th style={{ width: 130 }}>Categoria</th>
+            <th>Título</th>
+            <th style={{ width: 150 }}>Valor</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          {
+            list.map((item, index) =>
+              <TableItem key={index} item={item} />
+            )
+          }
+
+        </tbody>
+      </table>
+
+    </div>
+  );
+}
