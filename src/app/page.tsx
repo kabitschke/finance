@@ -7,6 +7,7 @@ import { Category } from '@/types/Category';
 import { categories } from "@/data/categories";
 import { filterListByMonth, getCurrentMonth } from "@/helpers/dateFilter";
 import { TableArea } from "@/components/TableArea/page";
+import { InfoArea } from "@/components/InfoArea/page";
 
 
 
@@ -20,7 +21,9 @@ export default function Home() {
 
   }, [list, currentMonth]);
 
-  console.log('Lista Filtrada ', filteredList);
+  const handleMonthChange = (newMonth: string) => {
+    setCurrentMonth(newMonth);
+  }
 
   return (
     <div className={styles.container}>
@@ -33,6 +36,7 @@ export default function Home() {
 
       <div className={styles.body}>
         {/* Área de informações */}
+        <InfoArea currentMonth={currentMonth} onMonthChange={handleMonthChange} />
 
         {/* Área de inserção  */}
 
