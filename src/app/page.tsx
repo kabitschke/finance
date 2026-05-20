@@ -13,6 +13,8 @@ import { InfoArea } from "@/components/InfoArea/page";
 
 export default function Home() {
   const [list, setList] = useState(items);
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0);
   const [filteredList, setFilteredList] = useState<Item[]>([]);
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
 
@@ -22,6 +24,7 @@ export default function Home() {
   }, [list, currentMonth]);
 
   const handleMonthChange = (newMonth: string) => {
+    /**Quando o mês trocar */
     setCurrentMonth(newMonth);
   }
 
@@ -35,12 +38,18 @@ export default function Home() {
       </div>
 
       <div className={styles.body}>
-        {/* Área de informações */}
-        <InfoArea currentMonth={currentMonth} onMonthChange={handleMonthChange} />
+
+        <InfoArea
+          currentMonth={currentMonth}
+          onMonthChange={handleMonthChange}
+          income={income}
+          expense={expense}
+
+        />
 
         {/* Área de inserção  */}
 
-        {/* Tabela de itens */}
+
 
         <TableArea list={filteredList} />
 

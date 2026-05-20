@@ -1,21 +1,28 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import styles from './page.module.css';
 import { formatCurrentMonth } from '@/helpers/dateFilter';
+import { ResumeItem } from '../ResumeItem/page';
 
 type Props = {
     currentMonth: string;
+    /**Uma função que não retorna nada com parametro newMonth */
     onMonthChange: (newMonth: string) => void;
+    income: number;
+    expense: number;
 }
 
 
 
-export const InfoArea = ({ currentMonth, onMonthChange }: Props) => {
+export const InfoArea = ({ currentMonth, onMonthChange, income, expense }: Props) => {
 
     const handlePrevMonth = () => {
         let [year, month] = currentMonth.split('-');
         let currentDate = new Date(parseInt(year), parseInt(month) - 1, 1);
+        /**A classe Date é instaciada em currentDate, passando o ano mês e dia em number  */
         currentDate.setMonth(currentDate.getMonth() - 1);
-        onMonthChange(`${currentDate.getFullYear()}- ${currentDate.getMonth() + 1}`)
+        /** setMonth() é um método da classe Date getMoth() pega o mês e volta com -1 */
+        onMonthChange(`${currentDate.getFullYear()} - ${currentDate.getMonth() + 1}`)
+        /**onMonthChange atualiza o estado, Formatação da data para exibição */
 
     }
 
@@ -23,7 +30,7 @@ export const InfoArea = ({ currentMonth, onMonthChange }: Props) => {
         let [year, month] = currentMonth.split('-');
         let currentDate = new Date(parseInt(year), parseInt(month) - 1, 1);
         currentDate.setMonth(currentDate.getMonth() + 1);
-        onMonthChange(`${currentDate.getFullYear()}- ${currentDate.getMonth() + 1}`)
+        onMonthChange(`${currentDate.getFullYear()} - ${currentDate.getMonth() + 1}`)
 
     }
 
@@ -34,14 +41,21 @@ export const InfoArea = ({ currentMonth, onMonthChange }: Props) => {
                 <div className={styles.arrowLeft}
                     onClick={handlePrevMonth}><ArrowLeft /></div>
 
-                <div className={styles.monthTitle}
-                >{formatCurrentMonth(currentMonth)}</div>
+                <div className={styles.monthTitle}>
+                    {formatCurrentMonth(currentMonth)}
+                </div>
 
                 <div onClick={handleNextMonth} className={styles.arrowRight}><ArrowRight /></div>
 
             </div>
 
             <div className={styles.resumeArea}>
+
+                <ResumeItem title="Receitas" value={income} />
+                <ResumeItem title="Despesas" value={expense} />
+                <ResumeItem title="Balanço" value={income - expense} />
+
+
 
             </div>
         </div>

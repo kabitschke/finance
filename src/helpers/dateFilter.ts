@@ -39,7 +39,10 @@ export const addZeroToDate = (n: number): string => n < 10 ? `0${n}` : `${n}`;
 
 export const formatCurrentMonth = (currentMonth: string): string => {
     let [year, month] = currentMonth.split('-');
+    /**currentMonth possui Date aqui ocorre desestruturação */
     let months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    /**Cria array com meses em português */
     return `${months[parseInt(month) - 1]} de ${year}`;
+    /** month tem mês em string ex 05 parseInt fica 5 vira number e acessa o índice do array -1 porque a contagem inicia do zero */
 }
 

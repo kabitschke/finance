@@ -6,13 +6,13 @@
     margin-top: -40px;
     display: flex;
     align-items: center;
+    color: #000;
 }
 
 .monthArea {
     flex: 1;
     display: flex;
     align-items: center;
-    color: #000;
 }
 
 .monthTitle {
