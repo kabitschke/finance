@@ -8,6 +8,7 @@ import { categories } from "@/data/categories";
 import { filterListByMonth, getCurrentMonth } from "@/helpers/dateFilter";
 import { TableArea } from "@/components/TableArea/page";
 import { InfoArea } from "@/components/InfoArea/page";
+import { InputArea } from "@/components/InputArea/page";
 
 
 
@@ -23,9 +24,35 @@ export default function Home() {
 
   }, [list, currentMonth]);
 
+
+  useEffect(() => {
+    let incomeCount = 0;
+    let expenseCount = 0;
+
+    for (let i in filteredList) {
+      if (categories[filteredList[i].category].expensive) {
+        expenseCount += filteredList[i].value;
+      } else {
+        incomeCount += filteredList[i].value;
+      }
+    }
+
+    setIncome(incomeCount);
+    setExpense(expenseCount);
+
+  }, [filteredList]);
+
   const handleMonthChange = (newMonth: string) => {
     /**Quando o mês trocar */
     setCurrentMonth(newMonth);
+  }
+
+  const handleAddItem = (item: Item) => {
+    let newList = [...list];
+    newList.push(item);
+    setList(newList);
+
+    console.log('New List', list);
   }
 
   return (
@@ -47,7 +74,7 @@ export default function Home() {
 
         />
 
-        {/* Área de inserção  */}
+        <InputArea onAdd={handleAddItem} />
 
 
 

@@ -14,7 +14,10 @@ export const ResumeItem = ({ title, value }: Props) => {
 
       <div className={styles.title}>{title}</div>
 
-      <div className={styles.info}>R$</div>
+      <div
+        className={styles.info}
+        style={{ color: `${value < 0 ? 'red' : 'black'}` }}
+      >R$ {value}</div>
 
     </div>
   );
