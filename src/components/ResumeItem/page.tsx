@@ -7,8 +7,6 @@ type Props = {
 
 export const ResumeItem = ({ title, value }: Props) => {
 
-
-
   return (
     <div className={styles.container}>
 
@@ -17,7 +15,10 @@ export const ResumeItem = ({ title, value }: Props) => {
       <div
         className={styles.info}
         style={{ color: `${value < 0 ? 'red' : 'black'}` }}
-      >R$ {value}</div>
+      >{value.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      })}</div>
 
     </div>
   );

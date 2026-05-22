@@ -21,11 +21,12 @@ export const TableItem = ({ item }: Props) => {
       <td className={styles.column}>{item.title}</td>
       <td className={styles.column}>
         <div style={{ color: `${categories[item.category].expensive ? 'red' : 'green'}` }}>
-          R$ {item.value}
+          {item.value.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          })}
         </div>
       </td>
     </tr>
-
-
   );
 }

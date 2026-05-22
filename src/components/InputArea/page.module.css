@@ -5,3 +5,13 @@
     padding: 20px;
     margin-top: 20px;
 }
+
+.formulario {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.formulario button {
+    cursor: pointer;
+}
