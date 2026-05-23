@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Banknote, BanknoteArrowDown, Calendar, Scale, TrendingDown, TrendingUp } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Scale, TrendingDown, TrendingUp } from 'lucide-react';
 import styles from './page.module.css';
 import { formatCurrentMonth } from '@/helpers/dateFilter';
 import { ResumeItem } from '../ResumeItem/page';
@@ -54,7 +54,7 @@ export const InfoArea = ({ currentMonth, onMonthChange, income, expense }: Props
 
             <div className={styles.resumeArea}>
                 <ResumeItem title="Receitas" msg="Total de entradas" icon={TrendingUp} value={income} />
-                <ResumeItem title="Despesas" msg="Total de saídas" icon={TrendingDown} value={expense} />
+                <ResumeItem title="Despesas" msg="Total de saídas" background='#FD4654' color='#0E152F' icon={TrendingDown} value={expense} />
                 <ResumeItem title="Balanço" msg="Saldo do mês" icon={Scale} value={balance} />
             </div>
         </div>

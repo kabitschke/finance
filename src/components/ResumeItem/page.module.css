@@ -1,23 +1,38 @@
 .container {
-  flex: 1;
+  display: flex;
+  
 }
 
-.card {
+.cardContainer {
   display: flex;
-  flex-direction: column;
-  background-color: #191f3b;
+  align-items: center;
+  background-color: #0E152F;
   margin-left: 10px;
   border-radius: 8px;
   padding: 10px;
+  gap: 10px;
+}
+
+
+
+.icon {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #49B75E;
 }
 
 .title {
   font-size: 10px;
   color: #888;
   margin: 5px 0;
-
 }
 
-.value {
+.value {   
   font-weight: bold;
+  white-space: nowrap;
+  display: inline-block;
 }
