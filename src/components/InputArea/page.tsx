@@ -36,26 +36,39 @@ export const InputArea = ({ onAdd }: Props) => {
     return (
         <div className={styles.container}>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.formulario}>
 
-                <input type="date" {...register("date")} />
-                {errors.date && <p>{errors.date.message}</p>}
+                <div className={styles.message}>
+                    <input type="date" {...register("date")} className={`${styles.input} ${errors.date ? styles.error : ""}`} />
+                    {errors.date && <p>{errors.date.message}</p>}
+                </div>
 
-                <select {...register("category")}>
-                    <option value="">Selecione</option>
-                    <option value="food">Alimentação</option>
-                    <option value="rent">Aluguel</option>
-                    <option value="salary">Salário</option>
-                </select>
-                {errors.category && <p>{errors.category.message}</p>}
+                <div>
+                    <select {...register("category")} className={`${styles.select} ${errors.category ? styles.error : ""}`}>
+                        <option value="">Selecione</option>
+                        <option value="food">Alimentação</option>
+                        <option value="rent">Aluguel</option>
+                        <option value="salary">Salário</option>
+                    </select>
+                    {errors.category && <p>{errors.category.message}</p>}
+                </div>
 
-                <input type="text" {...register("title")} />
-                {errors.title && <p>{errors.title.message}</p>}
+                <div>
+                    <input type="text" {...register("title")} className={`${styles.input} ${errors.title ? styles.error : ""}`} placeholder="Título" />
+                    {errors.title && <p>{errors.title.message}</p>}
 
-                <input type="text" {...register("value")} />
-                {errors.value && <p>{errors.value.message}</p>}
+                </div>
 
-                <button type="submit">Adicionar</button>
+                <div>
+                    <input type="text" {...register("value")} className={`${styles.input} ${errors.value ? styles.error : ""}`} placeholder="R$" />
+                    {errors.value && <p>{errors.value.message}</p>}
+
+                </div>
+
+                <div>
+
+                    <button type="submit">Adicionar</button>
+                </div>
 
             </form>
 
