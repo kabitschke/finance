@@ -1,6 +1,6 @@
 .container {
-    background-color: #FFF;
-    box-shadow: 0px 0px 5px #ccc;
+    background-color: #070f26;
+    box-shadow: 0px 0px 5px #1d2240;
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
@@ -14,7 +14,7 @@
 }
 
 .formulario input {
-    background-color: #FFF;
+    background-color: #091129;
     color: black;
     padding: 5px;
     border-radius: 8px;
@@ -23,7 +23,7 @@
 }
 
 .formulario select {
-    background-color: #FFF;
+    background-color: #091129;
     color: black;
     padding: 5px;
     border-radius: 8px;
@@ -43,8 +43,7 @@ input:focus {
     padding: 5px;
     border-radius: 8px;
     border: none;
-    background: #2563eb;
-
+    background-color: #6040de;
 }
 
 .formulario button:hover {

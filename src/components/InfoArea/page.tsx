@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Banknote, BanknoteArrowDown, Calendar, Scale, TrendingDown, TrendingUp } from 'lucide-react';
 import styles from './page.module.css';
 import { formatCurrentMonth } from '@/helpers/dateFilter';
 import { ResumeItem } from '../ResumeItem/page';
@@ -41,20 +41,21 @@ export const InfoArea = ({ currentMonth, onMonthChange, income, expense }: Props
         <div className={styles.container}>
             <div className={styles.monthArea}>
                 <div className={styles.arrowLeft}
-                    onClick={handlePrevMonth}><ArrowLeft /></div>
+                    onClick={handlePrevMonth}><ArrowLeft size={18} /></div>
 
                 <div className={styles.monthTitle}>
-                    {formatCurrentMonth(currentMonth)}
+
+                    <Calendar size={18} /> {formatCurrentMonth(currentMonth)}
                 </div>
 
-                <div onClick={handleNextMonth} className={styles.arrowRight}><ArrowRight /></div>
+                <div onClick={handleNextMonth} className={styles.arrowRight}><ArrowRight size={18} /></div>
 
             </div>
 
             <div className={styles.resumeArea}>
-                <ResumeItem title="Receitas" value={income} />
-                <ResumeItem title="Despesas" value={expense} />
-                <ResumeItem title="Balanço" value={balance} />
+                <ResumeItem title="Receitas" msg="Total de entradas" icon={TrendingUp} value={income} />
+                <ResumeItem title="Despesas" msg="Total de saídas" icon={TrendingDown} value={expense} />
+                <ResumeItem title="Balanço" msg="Saldo do mês" icon={Scale} value={balance} />
             </div>
         </div>
     )

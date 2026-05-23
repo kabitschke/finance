@@ -1,9 +1,28 @@
-.container {}
+.container {
+  margin: auto;
+  max-width: 980px;
+  margin-bottom: 50px;
+  padding: 20px;
+  background: #00061c;
 
-.header {
-  background-color: darkblue;
-  height: 150px;
-  text-align: center;
+}
+
+.finance {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  margin-bottom: 70px;
+}
+
+.finance h1 {
+  font-size: 20px;
+}
+
+.wallet {
+  display: flex;
+  padding: 4px;
+  border-radius: 4px;
+  background-color: #6040de;
 }
 
 .title {
@@ -12,10 +31,4 @@
   color: #FFF;
   padding-top: 30px;
 
-}
-
-.body {
-  margin: auto;
-  max-width: 980px;
-  margin-bottom: 50px;
 }

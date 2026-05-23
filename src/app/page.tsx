@@ -3,12 +3,12 @@ import styles from "./page.module.css";
 import { useEffect, useState } from 'react';
 import { Item } from '@/types/Item';
 import { items } from '@/data/items';
-import { Category } from '@/types/Category';
 import { categories } from "@/data/categories";
 import { filterListByMonth, getCurrentMonth } from "@/helpers/dateFilter";
 import { TableArea } from "@/components/TableArea/page";
 import { InfoArea } from "@/components/InfoArea/page";
 import { InputArea } from "@/components/InputArea/page";
+import { Wallet } from "lucide-react";
 
 
 
@@ -51,36 +51,32 @@ export default function Home() {
     let newList = [...list];
     newList.push(item);
     setList(newList);
-
-    console.log('New List', list);
   }
 
   return (
     <div className={styles.container}>
 
-      <div className={styles.header}>
 
+      <div className={styles.finance}>
+        <div className={styles.wallet}><Wallet size={18} /></div>
         <h1 className={styles.title}>Sistema Financeiro</h1>
-
       </div>
 
-      <div className={styles.body}>
+      <InfoArea
+        currentMonth={currentMonth}
+        onMonthChange={handleMonthChange}
+        income={income}
+        expense={expense}
 
-        <InfoArea
-          currentMonth={currentMonth}
-          onMonthChange={handleMonthChange}
-          income={income}
-          expense={expense}
+      />
 
-        />
-
-        <InputArea onAdd={handleAddItem} />
+      <InputArea onAdd={handleAddItem} />
 
 
 
-        <TableArea list={filteredList} />
+      <TableArea list={filteredList} />
 
-      </div>
+
 
     </div>
   );

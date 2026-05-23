@@ -2,15 +2,22 @@
   flex: 1;
 }
 
-.title {
-  text-align: center;
-  font-weight: bold;
-  color: #888;
-  margin-bottom: 5px;
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #191f3b;
+  margin-left: 10px;
+  border-radius: 8px;
+  padding: 10px;
 }
 
-.info {
-  text-align: center;
-  font-weight: bold;
+.title {
+  font-size: 10px;
+  color: #888;
+  margin: 5px 0;
 
+}
+
+.value {
+  font-weight: bold;
 }
