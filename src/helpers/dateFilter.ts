@@ -46,3 +46,13 @@ export const formatCurrentMonth = (currentMonth: string): string => {
     /** month tem mês em string ex 05 parseInt fica 5 vira number e acessa o índice do array -1 porque a contagem inicia do zero */
 }
 
+export const formatCurrencyBrl = (value: number) => {
+    const displayValue = value < 0
+        ? `R$ -${Math.abs(value).toLocaleString('pt-BR')}`
+        : value.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        });
+
+    return displayValue;
+}

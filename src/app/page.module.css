@@ -4,12 +4,11 @@
   margin-bottom: 50px;
   padding: 20px;
   background: #00061c;
-
 }
 
 .finance {
   display: flex;
-  align-items: flex-end;
+  align-items: baseline;
   gap: 5px;
   margin-bottom: 70px;
 }
@@ -20,8 +19,8 @@
 
 .wallet {
   display: flex;
-  padding: 4px;
-  border-radius: 4px;
+  padding: 6px;
+  border-radius: 8px;
   background-color: #6040de;
 }
 
@@ -30,5 +29,4 @@
   padding: 0;
   color: #FFF;
   padding-top: 30px;
-
 }

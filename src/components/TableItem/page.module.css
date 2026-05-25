@@ -1,12 +1,15 @@
-.line {}
-
 .column {
   padding: 10px 0;
 }
 
 .category {
-  display: inline-block;
+  display: flex;
+  gap: 5px;
   padding: 5px 10px;
   border-radius: 5px;
   color: #FFF;
+}
+
+.icon {
+  display: flex;
 }

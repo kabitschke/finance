@@ -4,6 +4,7 @@ import { Item } from '@/types/Item';
 import styles from './page.module.css';
 import { schema } from '@/components/schema';
 import { z } from "zod";
+import { Plus } from "lucide-react";
 
 type Props = {
     onAdd: (item: Item) => void;
@@ -36,6 +37,11 @@ export const InputArea = ({ onAdd }: Props) => {
     return (
         <div className={styles.container}>
 
+            <div className={styles.addArea}>
+                <div className={styles.icone}><Plus strokeWidth={2.5} size={14} /></div>
+                <h3>Adicionar Transação</h3>
+            </div>
+
             <form onSubmit={handleSubmit(onSubmit)} className={styles.formulario}>
 
                 <div className={styles.message}>
@@ -67,7 +73,7 @@ export const InputArea = ({ onAdd }: Props) => {
 
                 <div>
 
-                    <button type="submit">Adicionar</button>
+                    <button type="submit"><div className={styles.btnIcon}><Plus size={14} /></div>Adicionar</button>
                 </div>
 
             </form>

@@ -53,9 +53,9 @@ export const InfoArea = ({ currentMonth, onMonthChange, income, expense }: Props
             </div>
 
             <div className={styles.resumeArea}>
-                <ResumeItem title="Receitas" msg="Total de entradas" icon={TrendingUp} value={income} />
-                <ResumeItem title="Despesas" msg="Total de saídas" background='#FD4654' color='#0E152F' icon={TrendingDown} value={expense} />
-                <ResumeItem title="Balanço" msg="Saldo do mês" icon={Scale} value={balance} />
+                <ResumeItem type='income' title="Receitas" msg="Total de entradas" icon={TrendingUp} value={income} />
+                <ResumeItem type='expense' title="Despesas" msg="Total de saídas" background='#FD4654' color='#0E152F' icon={TrendingDown} value={expense} />
+                <ResumeItem type='balance' title="Balanço" msg="Saldo do mês" icon={Scale} value={balance} />
             </div>
         </div>
     )
