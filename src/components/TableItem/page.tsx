@@ -2,17 +2,17 @@ import { Item } from '@/types/Item';
 import styles from './page.module.css';
 import { formatDate } from '@/helpers/dateFilter';
 import { categories } from '@/data/categories';
-import { LucideIcon } from 'lucide-react';
+
 
 
 
 type Props = {
   item: Item;
-  icon?: LucideIcon;
-
 }
 
-export const TableItem = ({ item, icon: Icon }: Props) => {
+export const TableItem = ({ item }: Props) => {
+
+  const CategoryIcon = categories[item.category].icon;
 
   return (
 
@@ -20,7 +20,13 @@ export const TableItem = ({ item, icon: Icon }: Props) => {
       <td className={styles.column}>{formatDate(item.date)}</td>
       <td className={styles.column}>
         <div className={styles.category} style={{ backgroundColor: `${categories[item.category].color}` }}>
-          <div className={styles.icon}></div>{categories[item.category].title}
+          <div
+            className={styles.category}
+            style={{ backgroundColor: categories[item.category].color }}
+          >
+            <CategoryIcon size={14} />
+            {categories[item.category].title}
+          </div>
         </div>
       </td>
       <td className={styles.column}>{item.title}</td>
