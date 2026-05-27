@@ -49,7 +49,23 @@ export default function Home() {
 
   const handleAddItem = (item: Item) => {
     let newList = [...list];
-    newList.push(item);
+
+    if (item.month && item.month > 1) {
+      const parcela = item.value / item.month;
+
+      for (let i = 0; i < item.month; i++) {
+        const newDate = new Date(item.date);
+        newDate.setMonth(newDate.getMonth() + i);
+
+        newList.push({
+          ...item,
+          date: newDate,
+          value: parcela
+        });
+      }
+    } else {
+      newList.push(item);
+    }
     setList(newList);
   }
 

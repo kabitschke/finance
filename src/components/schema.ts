@@ -3,6 +3,7 @@ import { z } from "zod";
 export const schema = z.object({
   date: z.string().min(1, "Data é obrigatória"),
   category: z.string().min(1, "Categoria é obrigatória"),
+  month: z.string().transform((val) => (val === "" ? null : Number(val))),
   title: z.string().min(1, "Título é obrigatório"),
   value: z
     .string()

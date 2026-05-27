@@ -1,7 +1,8 @@
-import { Item } from '@/types/Item';
 import styles from './page.module.css';
 import { formatDate } from '@/helpers/dateFilter';
 import { categories } from '@/data/categories';
+
+import { Item } from '@/types/Item';
 
 
 
@@ -13,6 +14,10 @@ type Props = {
 export const TableItem = ({ item }: Props) => {
 
   const CategoryIcon = categories[item.category].icon;
+
+
+
+
 
   return (
 

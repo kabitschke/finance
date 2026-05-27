@@ -5,6 +5,7 @@ import styles from './page.module.css';
 import { schema } from '@/components/schema';
 import { z } from "zod";
 import { Plus } from "lucide-react";
+import { useState } from "react";
 
 type Props = {
     onAdd: (item: Item) => void;
@@ -13,6 +14,8 @@ type Props = {
 
 export const InputArea = ({ onAdd }: Props) => {
 
+
+
     type FormData = z.infer<typeof schema>;
     const form = useForm({
         resolver: zodResolver(schema)
@@ -20,14 +23,21 @@ export const InputArea = ({ onAdd }: Props) => {
 
     const { register, handleSubmit, formState: { errors } } = form;
 
+
     const onSubmit = (data: FormData) => {
+
+        // const valorParcela = data.month
+        //     ? data.value / data.month
+        //     : data.value;
 
         let newList: Item = {
             date: new Date(data.date),
             category: data.category,
             title: data.title,
-            value: data.value
+            value: data.value,
+            month: data.month
         }
+
         onAdd(newList);
     };
 
@@ -58,6 +68,22 @@ export const InputArea = ({ onAdd }: Props) => {
                     </select>
                     {errors.category && <p>{errors.category.message}</p>}
                 </div>
+
+                <div>
+                    <select {...register("month")} className={`${styles.select} ${errors.month ? styles.error : ""}`}>
+                        <option value="">Parcelas</option>
+                        {[...Array(12)].map((_, index) => (
+                            <option key={index + 1} value={index + 1}>
+                                {index + 1}
+                            </option>
+
+                        ))}
+                    </select>
+                    {errors.month && <p>{errors.month.message}</p>}
+                </div>
+
+
+
 
                 <div>
                     <input type="text" {...register("title")} className={`${styles.input} ${errors.title ? styles.error : ""}`} placeholder="Título" />
