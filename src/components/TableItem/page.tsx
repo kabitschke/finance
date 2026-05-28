@@ -34,7 +34,7 @@ export const TableItem = ({ item }: Props) => {
           </div>
         </div>
       </td>
-      <td className={styles.column}>{item.title}</td>
+      <td className={styles.column}>{item.title} <div>{`${item.month}`}</div></td>
       <td className={styles.column}>
         <div style={{ color: `${categories[item.category].expensive ? '#FA5660' : '#4AC56E'}` }}>
           {item.value.toLocaleString('pt-BR', {

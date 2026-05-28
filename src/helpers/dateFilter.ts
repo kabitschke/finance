@@ -56,3 +56,27 @@ export const formatCurrencyBrl = (value: number) => {
 
     return displayValue;
 }
+
+export const expandInstallments = (list: Item[]): Item[] => {
+    let newList: Item[] = [];
+
+    list.forEach(item => {
+        if (!item.month || item.month <= 1) {
+            newList.push(item);
+            return;
+        }
+
+        for (let i = 0; i < item.month; i++) {
+            let newDate = new Date(item.date);
+            newDate.setMonth(newDate.getMonth() + i);
+
+            newList.push({
+                ...item,
+                date: newDate,
+                value: item.value / item.month, // divide parcela
+            });
+        }
+    });
+
+    return newList;
+};

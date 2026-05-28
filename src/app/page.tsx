@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Item } from '@/types/Item';
 import { items } from '@/data/items';
 import { categories } from "@/data/categories";
-import { filterListByMonth, getCurrentMonth } from "@/helpers/dateFilter";
+import { expandInstallments, filterListByMonth, getCurrentMonth } from "@/helpers/dateFilter";
 import { TableArea } from "@/components/TableArea/page";
 import { InfoArea } from "@/components/InfoArea/page";
 import { InputArea } from "@/components/InputArea/page";
@@ -19,10 +19,13 @@ export default function Home() {
   const [filteredList, setFilteredList] = useState<Item[]>([]);
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
 
-  useEffect(() => {
-    setFilteredList(filterListByMonth(list, currentMonth));
 
-  }, [list, currentMonth]);
+  const fulllist = expandInstallments(list);
+
+  useEffect(() => {
+    setFilteredList(filterListByMonth(fulllist, currentMonth));
+
+  }, [fulllist, currentMonth]);
 
 
   useEffect(() => {
