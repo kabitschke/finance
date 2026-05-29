@@ -70,10 +70,12 @@ export const expandInstallments = (list: Item[]): Item[] => {
             let newDate = new Date(item.date);
             newDate.setMonth(newDate.getMonth() + i);
 
+
             newList.push({
                 ...item,
                 date: newDate,
                 value: item.value / item.month, // divide parcela
+                installment: `${i + 1} / ${item.month}`
             });
         }
     });

@@ -9,6 +9,7 @@ import { TableArea } from "@/components/TableArea/page";
 import { InfoArea } from "@/components/InfoArea/page";
 import { InputArea } from "@/components/InputArea/page";
 import { Wallet } from "lucide-react";
+import { useMemo } from 'react';
 
 
 
@@ -20,12 +21,13 @@ export default function Home() {
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
 
 
-  const fulllist = expandInstallments(list);
+  const fullList = useMemo(() => {
+    return expandInstallments(list);
+  }, [list]);
 
   useEffect(() => {
-    setFilteredList(filterListByMonth(fulllist, currentMonth));
-
-  }, [fulllist, currentMonth]);
+    setFilteredList(filterListByMonth(fullList, currentMonth));
+  }, [fullList, currentMonth]);
 
 
   useEffect(() => {
@@ -51,25 +53,30 @@ export default function Home() {
   }
 
   const handleAddItem = (item: Item) => {
-    let newList = [...list];
 
-    if (item.month && item.month > 1) {
-      const parcela = item.value / item.month;
+    setList(prev => [...prev, item]);
+    // let newList = [...list];
 
-      for (let i = 0; i < item.month; i++) {
-        const newDate = new Date(item.date);
-        newDate.setMonth(newDate.getMonth() + i);
+    // if (item.month && item.month > 1) {
+    //   const parcela = item.value / item.month;
 
-        newList.push({
-          ...item,
-          date: newDate,
-          value: parcela
-        });
-      }
-    } else {
-      newList.push(item);
-    }
-    setList(newList);
+    //   for (let i = 0; i < item.month; i++) {
+    //     const newDate = new Date(item.date);
+    //     newDate.setMonth(newDate.getMonth() + i);
+
+    //     newList.push({
+    //       ...item,
+    //       date: newDate,
+    //       value: parcela
+    //     });
+    //   }
+    // } else {
+    //   newList.push(item);
+    // }
+    // setList(newList);
+
+
+
   }
 
   return (
