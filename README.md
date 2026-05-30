@@ -9,6 +9,7 @@ npm run dev
 # or
 yarn dev
 # or
+https://htmlcolorcodes.com/
 pnpm dev
 # or
 bun dev
